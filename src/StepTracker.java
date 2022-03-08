@@ -16,15 +16,15 @@ public class StepTracker {
     public void printStats() {
         System.out.println("Номер месяца, за который хотите увидеть статистику и нажмите ENTER");
         int monthNumberForPrint = scanner.nextInt();
-            System.out.println("Месяц " + monthNumberForPrint);
-            MonthData monthData = monthToDataMap.get(monthNumberForPrint);
-            monthData.printData();
+        System.out.println("Месяц " + monthNumberForPrint);
+        MonthData monthData = monthToDataMap.get(monthNumberForPrint);
+        monthData.printData();
         System.out.println("Количество пройденных шагов за месяц: " + monthData.sumOfStepsPerMonth());
         System.out.println("Максимальное пройденное количество шагов в месяце: " + monthData.maxNumberOfStepsPerMonth());
         System.out.println("Среднее количество шагов за месяц: " + monthData.averageNumberOfStepsPerMonth());
         System.out.println("Пройденная дистанция (в км): " + monthData.distancePerMonth());
         System.out.println("Количество сожжённых килокалорий: " + monthData.burnnedCaloriesPerMonth());
-
+        System.out.println("Лучшая серия: " + monthData.getTheBestSeries(currentStepGoal));
     }
 
     // п.1 меню - Ввести количество шагов за определённый день.

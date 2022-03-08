@@ -1,11 +1,14 @@
 public class Converter {
-    public double findDistance(int sum) {
-        double distance = sum*0.00075;
-        return distance;
+    double stepLengthInMetres = 0.75;
+    double metresInKm = 1000;
+    double kiloCaloriesPerStep = 0.05;
+
+    public double stepCountToDistance (int totalStepCount) {
+        double distanceInKm = totalStepCount * stepLengthInMetres/metresInKm;
+        return distanceInKm;
     }
 
-    public double findBurnedCalories(int sum) {
-        double calories = sum*0.05;
-        return calories;
+    public double stepCountToBurnedCalories(int totalStepCount) {
+        return totalStepCount * kiloCaloriesPerStep;
     }
 }

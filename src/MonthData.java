@@ -1,5 +1,3 @@
-import java.lang.reflect.Array;
-import java.util.ArrayList;
 import java.util.HashMap;
 
 public class MonthData {
@@ -67,7 +65,7 @@ public class MonthData {
         for (int i = 1; i <= 30; i++) {
             sum = sum + dayStepCountMap.get(i);
         }
-        double distanceTraveled = converter.findDistance(sum);
+        double distanceTraveled = converter.stepCountToDistance(sum);
         return distanceTraveled;
     }
 
@@ -77,9 +75,25 @@ public class MonthData {
         for (int i = 1; i <= 30; i++) {
             sum = sum + dayStepCountMap.get(i);
         }
-        double burnedCalories = converter.findBurnedCalories(sum);
+        double burnedCalories = converter.stepCountToBurnedCalories(sum);
         return burnedCalories;
     }
 
+    public int getTheBestSeries(int currentStepGoal) {
+        int theBestSeriesCount = 0;
+        int currentStepCount = 0;
+        for (int i = 1; i <= 30; i++) {
+            int stepCount = dayStepCountMap.get(i);
+            if (stepCount >= currentStepGoal) {
+                currentStepCount++;
+            } else {
+                if (currentStepCount > theBestSeriesCount) {
+                    theBestSeriesCount = currentStepCount;
+                }
+                currentStepCount = 0;
+            }
+        }
+        return theBestSeriesCount;
+    }
 
 }
