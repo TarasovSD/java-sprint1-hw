@@ -4,22 +4,31 @@ public class Main {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
         StepTracker stepTracker = new StepTracker();
-        while (true) {
+        String userInput;
+        boolean isShutdown = false;
+
+        while (!isShutdown) {
             printMenu();
-            int userInput = scanner.nextInt();
-            if (userInput == 1) {
-                stepTracker.setDaySteps();
-            } else if (userInput == 2) {
-                stepTracker.printStats();
-            } else if (userInput == 3) {
-                stepTracker.changeStepGoal();
-            } else if (userInput == 0) {
-                break;
-            } else {
-                System.out.println("Такой команды не существует");
+            userInput = scanner.nextLine();
+            switch (userInput) {
+                case "1":
+                    stepTracker.setDaySteps();
+                    break;
+                case "2":
+                    stepTracker.printStats();
+                    break;
+                case "3":
+                    stepTracker.changeStepGoal();
+                    break;
+                case "0":
+                    isShutdown = true;
+                    System.out.println("Программа завершена");
+                    break;
+                default:
+                    System.out.println("Такой команды не существует");
+                    break;
             }
         }
-        System.out.println("Программа завершена");
     }
 
     public static void printMenu() {

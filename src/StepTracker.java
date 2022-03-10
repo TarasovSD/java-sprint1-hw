@@ -3,11 +3,11 @@ import java.util.Scanner;
 
 public class StepTracker {
     int currentStepGoal = 10000;
-    HashMap<Integer, MonthData> monthToDataMap = new HashMap<Integer, MonthData>();
+    HashMap<Integer, MonthData> monthToDataMap = new HashMap<>();
     Scanner scanner = new Scanner(System.in);
 
     public StepTracker() {
-        for (int i = 1; i <= 12; i++ ) {
+        for (int i = 1; i <= 12; i++) {
             monthToDataMap.put(i, new MonthData());
         }
     }
@@ -61,10 +61,10 @@ public class StepTracker {
         }
         MonthData monthData = monthToDataMap.get(monthNumber);
         monthData.enterDayStepCount(dayNumber, stepCount);
-        System.out.println("Данные за " + monthNumber + " месяц изменены." );
+        System.out.println("Данные за " + monthNumber + " месяц изменены.");
     }
 
-    // п.3 меню - изменить целевое количество шагов.
+    // п.3 меню - Изменить целевое количество шагов.
     public void changeStepGoal() {
         System.out.println("Текущая цель " + currentStepGoal + " шагов.");
         while (true) {

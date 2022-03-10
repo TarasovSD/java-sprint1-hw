@@ -1,22 +1,23 @@
 import java.util.HashMap;
 
 public class MonthData {
-    HashMap<Integer, Integer> dayStepCountMap = new HashMap<Integer, Integer>();
+    HashMap<Integer, Integer> dayStepCountMap = new HashMap<>();
 
-    public MonthData () {
-        for (int i = 1; i <= 30; i++ ) {
+    public MonthData() {
+        for (int i = 1; i <= 30; i++) {
             dayStepCountMap.put(i, 0);
         }
     }
 
     //Ввод количества шагов за день
-    public void enterDayStepCount(int dayNumber, int stepCount) {;
+    public void enterDayStepCount(int dayNumber, int stepCount) {
         dayStepCountMap.put(dayNumber, stepCount);
     }
 
+    //Печать количества пройденных шагов по дням
     public void printData() {
         String result = "";
-        for (int i = 1; i <= 30; i++ ) {
+        for (int i = 1; i <= 30; i++) {
             Integer stepCount = dayStepCountMap.get(i);
             if (stepCount != 0) {
                 if (i != 30) {
@@ -31,7 +32,8 @@ public class MonthData {
         System.out.println();
     }
 
-    public int sumOfStepsPerMonth(){
+    //Вычисление суммы пройденных шагов за месяц
+    public int sumOfStepsPerMonth() {
         int sum = 0;
         for (int i = 1; i <= 30; i++) {
             sum = sum + dayStepCountMap.get(i);
@@ -39,17 +41,19 @@ public class MonthData {
         return sum;
     }
 
-    public double averageNumberOfStepsPerMonth(){
+    //Вычисление среднего количества шагов за месяц
+    public double averageNumberOfStepsPerMonth() {
         int sum = 0;
         int numberOfDays = 30;
         for (int i = 1; i <= 30; i++) {
             sum = sum + dayStepCountMap.get(i);
         }
-        double averageNumberOfSteps = sum/numberOfDays;
+        double averageNumberOfSteps = sum / numberOfDays;
         return averageNumberOfSteps;
     }
 
-    public int maxNumberOfStepsPerMonth(){
+    //Вычисление максимального пройденного количества шагов в месяце
+    public int maxNumberOfStepsPerMonth() {
         int maxCount = 0;
         for (int i = 1; i <= 30; i++) {
             if (dayStepCountMap.get(i) > maxCount) {
@@ -59,6 +63,7 @@ public class MonthData {
         return maxCount;
     }
 
+    //Вычисление пройденной дистанции за месяц (в км)
     public double distancePerMonth() {
         Converter converter = new Converter();
         int sum = 0;
@@ -69,7 +74,8 @@ public class MonthData {
         return distanceTraveled;
     }
 
-    public double burnnedCaloriesPerMonth(){
+    //Вычисление количества сожжённых за месяц килокалорий
+    public double burnnedCaloriesPerMonth() {
         Converter converter = new Converter();
         int sum = 0;
         for (int i = 1; i <= 30; i++) {
@@ -79,6 +85,7 @@ public class MonthData {
         return burnedCalories;
     }
 
+    //Вычисление максимальное количества подряд идущих дней, в течение которых количество шагов за день было равно или выше целевого
     public int getTheBestSeries(int currentStepGoal) {
         int theBestSeriesCount = 0;
         int currentStepCount = 0;
@@ -95,5 +102,4 @@ public class MonthData {
         }
         return theBestSeriesCount;
     }
-
 }
